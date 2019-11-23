@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 public class HelloService {
     private final HelloRepository helloRepository;
 
-    HelloService(HelloRepository helloRepository) {
+    public HelloService(
+            HelloRepository helloRepository
+    ) {
         this.helloRepository = helloRepository;
     }
 
