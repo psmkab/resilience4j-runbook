@@ -16,6 +16,6 @@ public class HelloService {
 
     @Nullable
     public String hello() {
-        return helloRepository
+        return helloRepository.hello();
     }
 }

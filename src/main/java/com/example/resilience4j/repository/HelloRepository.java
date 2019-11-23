@@ -1,9 +1,10 @@
 package com.example.resilience4j.repository;
 
-import com.example.resilience4j.HttpCaller;
+import com.example.resilience4j.external.HttpCaller;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 @Slf4j
@@ -13,7 +14,9 @@ import org.springframework.stereotype.Repository;
 public class HelloRepository {
     private final HttpCaller httpCaller;
 
-    public HelloRepository(HttpCaller httpCaller) {
+    public HelloRepository(
+            @Qualifier(value = "externalApiCaller") HttpCaller httpCaller
+    ) {
         this.httpCaller = httpCaller;
     }
 

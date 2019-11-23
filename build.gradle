@@ -31,14 +31,12 @@ dependencies {
         'org.springframework.boot:spring-boot-starter-aop',
     )
 
-    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test
-    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.2.0.RELEASE'
+    testCompile (
+        "org.springframework.boot:spring-boot-starter-test:${springBootVer}",
+        "org.mockito:mockito-all:1.10.19"
+    )
 
     annotationProcessor 'org.projectlombok:lombok'
-
-    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-    }
 }
 
 test {
