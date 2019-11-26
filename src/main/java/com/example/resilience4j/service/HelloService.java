@@ -1,8 +1,8 @@
 package com.example.resilience4j.service;
 
 import com.example.resilience4j.repository.HelloRepository;
-import jdk.internal.jline.internal.Nullable;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 
 @Slf4j
