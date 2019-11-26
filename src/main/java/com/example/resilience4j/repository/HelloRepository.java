@@ -24,7 +24,7 @@ public class HelloRepository {
         return "";
     }
 
-    public <T extends Throwable> String fallBackWithRuntimeEx(String _param, T ex) {
+    public <T extends Throwable> String fallBackWithRuntimeEx(T ex) {
         log.error("Cannot call external api w/ reason", ex);
         return "";
     }
