@@ -2,7 +2,7 @@ resilience4j:
   circuitbreaker:
     instances:
       helloRep:
-        registerHealthIndicator: true
+        registerHealthIndicator: false
         slidingWindowSize: 10
         permittedNumberOfCallsInHalfOpenState: 2
         slidingWindowType: COUNT_BASED
@@ -17,7 +17,7 @@ resilience4j:
         enableExponentialBackoff: true
         exponentialBackoffMultiplier: 2
         retryExceptions:
-          -
-          -
+#          -
+#          -
         ignoreExceptions:
-          -
+#          -
