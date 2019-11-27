@@ -29,4 +29,19 @@ public class HttpCaller {
         }
         return true;
     }
+
+    /**
+     * @return true always return {@link Boolean#TRUE}
+     */
+    public boolean callExternalApiWithAlwaysSuccess() {
+        return true;
+    }
+
+    /**
+     *
+     * @throws => always throw RuntimeException
+     */
+    public boolean callExternalApiWithAlwaysFail() {
+        throw new RuntimeException("Fail to calling external api..");
+    }
 }

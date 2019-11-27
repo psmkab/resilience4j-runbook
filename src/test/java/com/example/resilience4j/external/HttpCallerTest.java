@@ -7,7 +7,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
@@ -26,10 +25,20 @@ public class HttpCallerTest {
         assertTrue(httpCaller.callExternalApi());
     }
 
-    @Test
+    @Test(expected = RuntimeException.class)
     public void fail() {
         when(generator.generate()).thenReturn(false);
 
-        assertThatExceptionOfType(RuntimeException.class);
+        httpCaller.callExternalApi();
+    }
+
+    @Test
+    public void never_fail() {
+        assertTrue(httpCaller.callExternalApiWithAlwaysSuccess());
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void never_success() {
+        httpCaller.callExternalApiWithAlwaysFail();
     }
 }
