@@ -20,15 +20,17 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
-
     compileOnly 'org.projectlombok:lombok'
 
     compile(
         "org.springframework.boot:spring-boot-starter-web:${springBootVer}",
-        "io.github.resilience4j:resilience4j-spring-boot2:${resilience4jVersion}",
         'org.springframework.boot:spring-boot-starter-actuator',
         'org.springframework.boot:spring-boot-starter-aop',
+        "io.github.resilience4j:resilience4j-spring-boot2:${resilience4jVersion}",
+        "io.github.resilience4j:resilience4j-reactor:${resilience4jVersion}",
+        "io.github.resilience4j:resilience4j-micrometer:${resilience4jVersion}",
+        "io.micrometer:micrometer-registry-prometheus",
+        "io.micrometer:micrometer-core",
     )
 
     testCompile (
