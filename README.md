@@ -2,6 +2,7 @@
     <img src="https://img.shields.io/badge/build-passed-brightgreen">
     <img src="https://img.shields.io/badge/resilience4j-1.0.0-lightgrey">
 </p>
+
 # resilience4j-sample
 
 ## resilience4j w/ PROMETHEUS, GRAFANA
