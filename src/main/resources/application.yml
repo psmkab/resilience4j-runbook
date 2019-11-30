@@ -2,7 +2,7 @@ resilience4j:
   circuitbreaker:
     instances:
       helloRep:
-        registerHealthIndicator: false
+        registerHealthIndicator: true
         slidingWindowSize: 10
         permittedNumberOfCallsInHalfOpenState: 2
         slidingWindowType: COUNT_BASED
@@ -12,6 +12,7 @@ resilience4j:
   retry:
     instances:
       helloRep:
+        registerHealthIndicator: true
         maxRetryAttempts: 3
         waitDuration: 10s
         enableExponentialBackoff: true
@@ -20,4 +21,22 @@ resilience4j:
 #          -
 #          -
         ignoreExceptions:
-#          -
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+    ratelimiter:
+      enabled: true
+  endpoint:
+    prometheus:
+      enabled: true
+    metrics:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    export:
+      prometheus:
+        enabled: true
