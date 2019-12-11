@@ -29,6 +29,7 @@ dependencies {
         "io.github.resilience4j:resilience4j-spring-boot2:${resilience4jVersion}",
         "io.github.resilience4j:resilience4j-reactor:${resilience4jVersion}",
         "io.github.resilience4j:resilience4j-micrometer:${resilience4jVersion}",
+        "io.github.resilience4j:resilience4j-all:${resilience4jVersion}",
         "io.micrometer:micrometer-registry-prometheus",
         "io.micrometer:micrometer-core",
     )
@@ -38,6 +39,7 @@ dependencies {
         "org.mockito:mockito-all:1.10.19"
     )
 
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
     annotationProcessor 'org.projectlombok:lombok'
 }
 

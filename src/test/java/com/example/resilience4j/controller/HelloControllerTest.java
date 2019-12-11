@@ -21,7 +21,7 @@ public class HelloControllerTest {
 
     @Test
     public void get_message_from_service() throws Exception {
-        when(helloService.hello()).thenReturn("success");
+        when(helloService.random()).thenReturn("success");
         String result = helloController.hello();
 
         assertEquals("success", result);

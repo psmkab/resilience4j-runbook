@@ -1,9 +1,13 @@
 package com.example.resilience4j.external;
 
 import com.example.resilience4j.util.RandomValueGenerator;
+import lombok.extern.slf4j.Slf4j;
 import lombok.val;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.HttpServerErrorException;
 
+@Slf4j
 @Component(value = "externalApiCaller")
 public class HttpCaller {
     private final RandomValueGenerator randomValueGenerator;
@@ -22,6 +26,7 @@ public class HttpCaller {
      * @return boolean
      */
     public boolean callExternalApi() {
+        log.info("Calling ExternalApi");
         val result = (boolean) randomValueGenerator.generate();
 
         if(!result) {
@@ -34,6 +39,7 @@ public class HttpCaller {
      * @return true always return {@link Boolean#TRUE}
      */
     public boolean callExternalApiWithAlwaysSuccess() {
+        log.info("Calling ExternalApi : success");
         return true;
     }
 
@@ -42,6 +48,7 @@ public class HttpCaller {
      * @throws => always throw RuntimeException
      */
     public boolean callExternalApiWithAlwaysFail() {
-        throw new RuntimeException("Fail to calling external api..");
+        log.info("Calling ExternalApi : Fail");
+        throw new HttpServerErrorException(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

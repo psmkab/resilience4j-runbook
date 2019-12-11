@@ -17,8 +17,18 @@ public class HelloController {
         this.helloService = helloService;
     }
 
-    @GetMapping(value = "hello")
-    public String hello() {
-        return helloService.hello();
+    @GetMapping(value = "random")
+    public String random() {
+        return helloService.random();
+    }
+
+    @GetMapping(value = "success")
+    public String success() {
+        return helloService.success();
+    }
+
+    @GetMapping(value = "fail")
+    public String fail() {
+        return helloService.fail();
     }
 }

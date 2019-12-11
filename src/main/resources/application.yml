@@ -1,26 +1,25 @@
 resilience4j:
   circuitbreaker:
     instances:
-      helloRep:
+      httpCaller:
         registerHealthIndicator: true
         slidingWindowSize: 10
-        permittedNumberOfCallsInHalfOpenState: 2
+        permittedNumberOfCallsInHalfOpenState: 3
         slidingWindowType: COUNT_BASED
-        minimumNumberOfCalls: 3
-        waitDurationInOpenState: 10s
+        minimumNumberOfCalls: 5
+        waitDurationInOpenState: 1s
         failureRateThreshold: 50
+        eventConsumerBufferSize: 10
   retry:
     instances:
-      helloRep:
-        registerHealthIndicator: true
+      httpCaller:
         maxRetryAttempts: 3
-        waitDuration: 10s
+        waitDuration: 5s
         enableExponentialBackoff: true
         exponentialBackoffMultiplier: 2
         retryExceptions:
-#          -
-#          -
-        ignoreExceptions:
+          - org.springframework.web.client.HttpServerErrorException
+
 management:
   health:
     circuitbreakers:
