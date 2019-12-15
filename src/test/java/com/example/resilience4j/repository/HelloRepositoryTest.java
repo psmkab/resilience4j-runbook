@@ -49,12 +49,13 @@ public class HelloRepositoryTest {
     @Test
     public void success() {
         assertTrue(helloRepository.success());
-        assertTrue(retry.getMetrics().getNumberOfSuccessfulCallsWithoutRetryAttempt() == 1L);
+        assertTrue(retry.getMetrics().getNumberOfSuccessfulCallsWithoutRetryAttempt() == 1L);   // check not doing `retry`
     }
 
     @Test
     public void fail() {
         assertFalse(helloRepository.fail());
-        assertTrue(retry.getMetrics().getNumberOfFailedCallsWithRetryAttempt() == 1L);
+        assertTrue(retry.getMetrics().getNumberOfFailedCallsWithRetryAttempt() == 1L);  // check doing `retry`
+        assertTrue(retry.getMetrics().getNumberOfFailedCallsWithoutRetryAttempt() == 0L);   // check doing `retry`
     }
 }
