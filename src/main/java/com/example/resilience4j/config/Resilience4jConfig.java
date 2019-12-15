@@ -13,7 +13,6 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 public class Resilience4jConfig {
-
     private static final String HTTP_CALLER = "httpCaller";
 
     private final CircuitBreakerRegistry circuitBreakerRegistry;
@@ -30,14 +29,14 @@ public class Resilience4jConfig {
     @Bean
     public CircuitBreaker httpCallerCircuitBreaker() {
         CircuitBreaker circuitBreaker = circuitBreakerRegistry.circuitBreaker(HTTP_CALLER);
-        log.info("[{}] is initialized, {}", HTTP_CALLER, circuitBreaker);
+        log.info("[{}] is initialized, {}", HTTP_CALLER, circuitBreaker.toString());
         return circuitBreaker;
     }
 
     @Bean
     public Retry httpCallerRetry() {
         Retry retry = retryRegistry.retry(HTTP_CALLER);
-        log.info("[{}] is initialized, {}", HTTP_CALLER, retry);
+        log.info("[{}] is initialized, {}", HTTP_CALLER, retry.toString());
         return retry;
     }
 }

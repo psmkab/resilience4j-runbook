@@ -14,7 +14,7 @@ resilience4j:
     instances:
       httpCaller:
         maxRetryAttempts: 3
-        waitDuration: 5s
+        waitDuration: 1s
         enableExponentialBackoff: true
         exponentialBackoffMultiplier: 2
         retryExceptions:

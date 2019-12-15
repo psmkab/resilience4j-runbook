@@ -18,8 +18,7 @@ public class HelloController {
     }
 
     @GetMapping(value = "random")
-    public String random() {
-        return helloService.random();
+    public String random() {return helloService.random();
     }
 
     @GetMapping(value = "success")
