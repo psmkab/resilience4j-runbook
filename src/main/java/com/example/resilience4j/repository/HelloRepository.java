@@ -4,7 +4,6 @@ import com.example.resilience4j.external.HttpCaller;
 import io.github.resilience4j.circuitbreaker.CircuitBreaker;
 import io.github.resilience4j.decorators.Decorators;
 import io.github.resilience4j.retry.Retry;
-import io.vavr.CheckedFunction0;
 import io.vavr.control.Try;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
@@ -42,7 +41,7 @@ public class HelloRepository {
         return callExternalApi(httpCaller::callExternalApiWithAlwaysFail);
     }
 
-    public boolean callExternalApi(Supplier<Boolean> supplier) {
+    private boolean callExternalApi(Supplier<Boolean> supplier) {
         val caller = Decorators
                 .ofSupplier(supplier)
                 .withRetry(retry)
